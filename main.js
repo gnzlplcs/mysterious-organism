@@ -65,6 +65,23 @@ const pAequorFactory = (number, array) => {
         if(item === 'C' || item === 'G') countBases++;
       })
       return countBases >= this.dna.length * 0.6 ? true : false;
+    },
+
+    // Create a .complementStrand() method to the factory function's object that returns the complementary DNA strand. The rules are that 'A's match with 'T's and vice versa. Also, 'C's match with 'G's and vice versa. (Check the hint for more details)
+    complementaryStrand() {
+      let complementaryDNA = [];
+      this.dna.forEach(element => {
+        switch(element) {
+          case 'A': complementaryDNA.push('T');
+          break;
+          case 'T': complementaryDNA.push('A');
+          break;
+          case 'C': complementaryDNA.push('G');
+          break;
+          default: complementaryDNA.push('C');
+        }
+      });
+      return complementaryDNA;
     }
   }
 };
@@ -82,7 +99,7 @@ const makingInstances = number => {
 // test 1: create a pAequorFactory instance
 const sample = pAequorFactory(21, mockUpStrand());
 console.log(sample);
-
+ 
 // test 2: mutate the sample array
 const mutatedSample = sample.mutate();
 console.log(mutatedSample);
@@ -99,3 +116,6 @@ console.log(willSurvive);
 // test 5: create 30 instances
 const thrity_instances = makingInstances(30);
 console.log(thrity_instances.length);
+
+// test 6: creat a complementary strand (extra challenge)
+console.log(sample.complementaryStrand())
