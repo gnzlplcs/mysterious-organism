@@ -13,8 +13,7 @@ const mockUpStrand = () => {
   return newStrand;
 };
 
-// starts challenge
-
+// STARTS CHALLENGE
 // Since you need to create multiple objects, create a factory function pAequorFactory() that has two parameters:
 // The first parameter is a number (no two organisms should have the same number).
 // The second parameter is an array of 15 DNA bases.
@@ -70,7 +69,15 @@ const pAequorFactory = (number, array) => {
   }
 };
 
-
+// With the factory function set up, your team requests that you create 30 instances of pAequor that can survive in their natural environment. Store these instances in an array for your team to study later.
+const makingInstances = number => {
+  let instances = [];
+  for (let i = 0; i < number; i++) {
+    const newInstance = mockUpStrand();
+    instances.push(newInstance);
+  }
+  return instances;
+}
 
 // test 1: create a pAequorFactory instance
 const sample = pAequorFactory(21, mockUpStrand());
@@ -88,3 +95,7 @@ console.log(compareDNAArrays);
 // test 4: know if an DNA array has chance to survive
 const willSurvive = sample.willLikelySurvive();
 console.log(willSurvive);
+
+// test 5: create 30 instances
+const thrity_instances = makingInstances(30);
+console.log(thrity_instances.length);
